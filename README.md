@@ -38,7 +38,7 @@ hr
 Now you could type out hr1 \<- data.frame(Sepal.Length = c(5.1, 4.9,
 4.7, 4.6, 5.0, 5.4), Sepal.Width = c(3.5, 3.0, 3.2, 3.1, 3.6, 3.9),
 Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4. 1.7), Petal.Width = c(0.2,
-0.2, 0.2 0.2, 0.2, 0.4), Species = c(“setosa”, “setosa”, “setosa”,
+0.2, 0.2, 0.2, 0.2, 0.4), Species = c(“setosa”, “setosa”, “setosa”,
 “setosa”, “setosa”, “setosa”)). But what if you forget to type a ‘c’ or
 a ‘,’ or forgot an ‘s’ in ‘setosa’. (All of these may or may have happen
 while writting out this short example). Your object would not be the
@@ -52,20 +52,28 @@ gen_code(hr)
 ```
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+## The code I wrote above
+hr1 <- data.frame(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5.0, 5.4), Sepal.Width = c(3.5, 3.0, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4), Species = c("setosa", "setosa", "setosa", "setosa", "setosa", "setosa"))
+
+## The code generated that was copy and pasted
+hr2 <- data.frame(Sepal.Length = as.numeric(c(5.1, 4.9, 4.7, 4.6, 5, 5.4)), Sepal.Width = as.numeric(c(3.5, 3, 3.2, 3.1, 3.6, 3.9)), Petal.Length = as.numeric(c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7)), Petal.Width = as.numeric(c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4)), Species = factor(c('setosa', 'setosa', 'setosa', 'setosa', 'setosa', 'setosa'), levels = c('setosa', 'versicolor', 'virginica')))
+
+waldo::compare(hr, hr1)
+#> `old$Species` is an S3 object of class <factor>, an integer vector
+#> `new$Species` is a character vector ('setosa', 'setosa', 'setosa', 'setosa', 'setosa', ...)
+waldo::compare(hr, hr2)
+#> ✔ No differences
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+I failed to realize that species was a factor and hr and hr1 were not
+the same, but hr and hr are the same.
+
+And just a final comparison, with both waldo and testthat
+
+``` r
+waldo::compare(head(iris), hr2)
+#> ✔ No differences
+testthat::expect_equal(head(iris), hr2)
+```
 
 .
