@@ -10,3 +10,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 URL: https://github.com/paulinone/obcogen
 BugReports: https://github.com/paulinone/obcogen/issues
+Suggests: 
+    testthat,
+    waldo
+Depends: R (>= 3.5.0)

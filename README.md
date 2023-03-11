@@ -83,11 +83,12 @@ testthat::expect_equal(head(iris), hr2)
 
 It works! They are in fact identical!
 
-One caveat. That I am hoping to find a work around for. I have noticed
-that R can only have so characters or lines that represent a line of
-code. If you put `code_gen(iris)`. You will get a whole string, but if
-you paste it directly R will not evaulate it properly. I found out I had
-to create a new line of code for the “Species” variable.
+One caveat, I am hoping that I find solution to. I have noticed that R
+can only have so characters in a line of code. If you put
+`code_gen(iris)`. You will get a whole string, but if you paste it
+directly R will not evaluate it properly. I found out I had to create a
+new line of code for the “Species” variable. It’s annoying, but still
+quicker than typing out the whole `iris` dataset.
 
 ``` r
 code_gen(iris)

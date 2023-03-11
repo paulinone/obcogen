@@ -52,7 +52,7 @@ code_gen(object)
 a string of code to build the object
 }
 \description{
-Generate Code
+Generates a String of Code to build an object
 }
 \examples{
 t1 <- data.frame(id = 1:6, sex = rep(c("M", "F"),3))

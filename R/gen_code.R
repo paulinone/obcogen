@@ -1,5 +1,7 @@
 #' Generate Code
 #'
+#' Generates a String of Code to build an object
+#'
 #' @param object a vector, tibble, data.frame, list, matrix, or array
 #'
 #' @return a string of code to build the object
