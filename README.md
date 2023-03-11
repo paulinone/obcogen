@@ -6,7 +6,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of obcogen is to …
+The goal of obcogen (object code generator) is to create an ability to
+create code that would build a data.frames or tibbles. The idea came
+about when creating tests and I was expecting an equal tibble, but I did
+not want to type out 20 observations for 5 variables. Imagine if it was
+bigger…
 
 ## Installation
 
