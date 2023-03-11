@@ -42,7 +42,7 @@ Now you could type out hr1 <- data.frame(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5.
  
 ```{r example}
 library(obcogen)
-gen_code(hr)
+code_gen(hr)
 ```
 
 ```{r}
@@ -61,9 +61,13 @@ I failed to realize that species was a factor and hr and hr1 were not the same, 
  
 And just a final comparison, with both waldo and testthat
 ```{r}
+## this should not work
+try(testthat::expect_equal(head(iris), hr1))
+
 waldo::compare(head(iris), hr2)
 testthat::expect_equal(head(iris), hr2)
+
 ```
 
-
+It works! They are infact identical. 
 .

@@ -47,7 +47,7 @@ time doing this.
 
 ``` r
 library(obcogen)
-gen_code(hr)
+code_gen(hr)
 #> [1] "data.frame(Sepal.Length = as.numeric(c(5.1, 4.9, 4.7, 4.6, 5, 5.4)), Sepal.Width = as.numeric(c(3.5, 3, 3.2, 3.1, 3.6, 3.9)), Petal.Length = as.numeric(c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7)), Petal.Width = as.numeric(c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4)), Species = factor(c('setosa', 'setosa', 'setosa', 'setosa', 'setosa', 'setosa'), levels = c('setosa', 'versicolor', 'virginica')))"
 ```
 
@@ -71,9 +71,14 @@ the same, but hr and hr are the same.
 And just a final comparison, with both waldo and testthat
 
 ``` r
+## this should not work
+try(testthat::expect_equal(head(iris), hr1))
+#> Error : head(iris) not equal to `hr1`.
+#> Component "Species": 'current' is not a factor
+
 waldo::compare(head(iris), hr2)
 #> ✔ No differences
 testthat::expect_equal(head(iris), hr2)
 ```
 
-.
+It works! They are infact identical. .
